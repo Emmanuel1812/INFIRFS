@@ -1,0 +1,23 @@
+<div class="history-container">
+    <h2>{{ ts.translate('NAV_HISTORY') }}</h2>
+
+    <div *ngIf="orders.length === 0" class="no-orders">
+        <p>You have no past orders.</p>
+    </div>
+
+    <div *ngFor="let order of orders" class="order-card">
+        <div class="order-header">
+            <span class="order-id">Order #{{ order.id }}</span>
+            <span class="order-date">{{ order.orderDate | date:'medium' }}</span>
+        </div>
+        <div class="order-items">
+            <div *ngFor="let item of order.items" class="order-item">
+                <span>{{ item.quantity }}x {{ item.product.name }}</span>
+                <span>${{ item.priceAtTimeOfOrder }}</span>
+            </div>
+        </div>
+        <div class="order-total">
+            <strong>{{ ts.translate('TXT_TOTAL') }} ${{ order.totalAmount }}</strong>
+        </div>
+    </div>
+</div>

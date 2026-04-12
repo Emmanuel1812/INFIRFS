@@ -1,0 +1,49 @@
+<div class="admin-container">
+    <h2>Admin Dashboard: Product Management</h2>
+
+    <div class="product-form">
+        <h3>{{ isEditing ? 'Edit Product' : 'Add New Product' }}</h3>
+        <form (ngSubmit)="saveProduct()">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" [(ngModel)]="selectedProduct.name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <input type="text" [(ngModel)]="selectedProduct.category" name="category" required>
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input type="number" [(ngModel)]="selectedProduct.price" name="price" required step="0.01">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea [(ngModel)]="selectedProduct.description" name="description" rows="3"></textarea>
+            </div>
+            <button type="submit" class="accessible-btn mr-2">Save</button>
+            <button type="button" class="accessible-btn secondary" (click)="cancelEdit()">Cancel/Clear</button>
+        </form>
+    </div>
+
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of products">
+                <td>{{ p.id }}</td>
+                <td>{{ p.name }}</td>
+                <td>${{ p.price }}</td>
+                <td>
+                    <button class="accessible-btn small mr-2" (click)="editProduct(p)">Edit</button>
+                    <button class="accessible-btn secondary small" (click)="deleteProduct(p.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

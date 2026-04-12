@@ -1,0 +1,23 @@
+<div class="detail-container" *ngIf="product">
+    <div class="product-image-large-container">
+        <img *ngIf="product.imageUrl" [src]="product.imageUrl" [alt]="product.name" class="product-image-large">
+        <div *ngIf="!product.imageUrl" class="product-image-placeholder-large">
+            <span>{{ product.name.substring(0,2).toUpperCase() }}</span>
+        </div>
+    </div>
+    <div class="product-info">
+        <h2>{{ product.name }}</h2>
+        <p class="category">{{ product.category }}</p>
+        <p class="price">${{ product.price }}</p>
+        <div class="description-box">
+            <p>{{ product.description }}</p>
+        </div>
+        <div class="actions">
+            <button class="accessible-btn" (click)="addToCart()">{{ ts.translate('BTN_ADD_CART') }}</button>
+            <a routerLink="/" class="accessible-btn secondary ml-10">{{ ts.translate('BTN_BACK') }}</a>
+        </div>
+    </div>
+</div>
+<div *ngIf="!product">
+    <p>{{ ts.translate('TXT_LOADING') }}</p>
+</div>

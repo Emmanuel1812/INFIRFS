@@ -1,0 +1,27 @@
+<div class="profile-container">
+    <h2>{{ ts.translate('PROF_TITLE') }}</h2>
+
+    <div *ngIf="message" [ngClass]="{'success-text': !isError, 'error-text': isError}"
+        style="margin-bottom: 1.5rem; text-align: center; padding: 10px; background: var(--bg-warm); border-radius: var(--radius-sm);">
+        {{ message }}
+    </div>
+
+    <div class="form-group">
+        <label>{{ ts.translate('AUTH_EMAIL') }}</label>
+        <input type="email" [value]="user.email" disabled class="disabled-input">
+        <small>{{ ts.translate('PROF_CANT') }}</small>
+    </div>
+
+    <div class="form-group">
+        <label>{{ ts.translate('AUTH_FN') }} <span style="color: red">*</span></label>
+        <input type="text" [(ngModel)]="user.firstName">
+    </div>
+
+    <div class="form-group">
+        <label>{{ ts.translate('AUTH_LN') }} <span style="color: red">*</span></label>
+        <input type="text" [(ngModel)]="user.lastName">
+    </div>
+
+    <button class="accessible-btn primary" style="width: 100%; justify-content: center;" (click)="onSave()">{{
+        ts.translate('BTN_SAVE') }}</button>
+</div>

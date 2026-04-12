@@ -1,0 +1,38 @@
+<div class="auth-container">
+    <div *ngIf="isLoggedIn()" class="logged-in-view">
+        <h2>{{ ts.translate('AUTH_WELCOME') }}</h2>
+        <p>{{ ts.translate('AUTH_LOGGED_IN') }}</p>
+        <button class="accessible-btn secondary mt-2" (click)="logout()">{{ ts.translate('AUTH_LOGOUT') }}</button>
+    </div>
+
+    <div *ngIf="!isLoggedIn()" class="form-wrapper">
+        <h2>{{ isLogin ? ts.translate('AUTH_LOGIN') : ts.translate('AUTH_REGISTER') }}</h2>
+
+        <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm" class="auth-form">
+            <ng-container *ngIf="!isLogin">
+                <label>{{ ts.translate('AUTH_FN') }}</label>
+                <input type="text" [(ngModel)]="firstName" name="firstName" required>
+
+                <label>{{ ts.translate('AUTH_LN') }}</label>
+                <input type="text" [(ngModel)]="lastName" name="lastName" required>
+            </ng-container>
+
+            <label>{{ ts.translate('AUTH_EMAIL') }}</label>
+            <input *ngIf="isLogin" type="email" [(ngModel)]="email" name="loginEmail" required>
+            <input *ngIf="!isLogin" type="email" [(ngModel)]="regEmail" name="regEmail" required>
+
+            <label>{{ ts.translate('AUTH_PWD') }}</label>
+            <input *ngIf="isLogin" type="password" [(ngModel)]="password" name="loginPassword" required>
+            <input *ngIf="!isLogin" type="password" [(ngModel)]="regPassword" name="regPassword" required>
+
+            <button type="submit" class="accessible-btn" [disabled]="authForm.invalid">{{ isLogin ?
+                ts.translate('BTN_LOGIN') : ts.translate('BTN_REG') }}</button>
+        </form>
+
+        <div class="toggle-link">
+            <a href="javascript:void(0)" (click)="toggleMode()">
+                {{ isLogin ? ts.translate('AUTH_TOGGLE_REG') : ts.translate('AUTH_TOGGLE_LOG') }}
+            </a>
+        </div>
+    </div>
+</div>

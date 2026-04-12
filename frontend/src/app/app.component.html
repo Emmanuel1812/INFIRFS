@@ -1,0 +1,55 @@
+<header class="main-header">
+  <div class="header-inner">
+    <a routerLink="/" class="logo">
+      <span class="logo-icon">🎮</span>
+      <span class="logo-text">GameEquip Shop</span>
+    </a>
+    <nav class="main-nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+        <span class="nav-icon">🛍️</span>
+        <span>{{ t('NAV_HOME') }}</span>
+      </a>
+      <a routerLink="/cart" routerLinkActive="active" class="nav-item">
+        <span class="nav-icon">🛒</span>
+        <span>{{ t('NAV_CART') }}</span>
+      </a>
+      <a routerLink="/history" *ngIf="isLoggedIn()" routerLinkActive="active" class="nav-item">
+        <span class="nav-icon">📦</span>
+        <span>{{ t('NAV_HISTORY') }}</span>
+      </a>
+      <a routerLink="/admin" *ngIf="isAdmin()" routerLinkActive="active" class="nav-item admin-item">
+        <span class="nav-icon">⚙️</span>
+        <span>{{ t('NAV_ADMIN') }}</span>
+      </a>
+      <a routerLink="/login" *ngIf="!isLoggedIn()" routerLinkActive="active" class="nav-item">
+        <span class="nav-icon">👤</span>
+        <span>{{ t('NAV_LOGIN') }}</span>
+      </a>
+      <a routerLink="/profile" *ngIf="isLoggedIn()" routerLinkActive="active" class="nav-item">
+        <span class="nav-icon">🔧</span>
+        <span>{{ t('NAV_PROFILE') }}</span>
+      </a>
+
+      <button class="lang-btn" *ngIf="isLoggedIn()" (click)="logout()">
+        <span class="lang-flag"></span>
+        <span>Logout ↩</span>
+      </button>
+      <button class="lang-btn" (click)="toggleLang()">
+        <span class="lang-flag">{{ translationService.currentLang() === 'nl' ? '🇬🇧' : '🇳🇱' }}</span>
+        <span>{{ translationService.currentLang() === 'nl' ? 'English' : 'Nederlands' }}</span>
+      </button>
+    </nav>
+  </div>
+</header>
+<div class="accessibility-banner">
+  <span class="banner-icon">⚠️</span>
+  <span><strong>Accessibility Mode:</strong> {{ t('LBL_COLOR_BLIND') }}</span>
+</div>
+<main class="content-container">
+  <router-outlet></router-outlet>
+</main>
+<footer class="main-footer">
+  <div class="footer-inner">
+    <p>&copy; 2026 GameEquip Shop &mdash; First Full Stack Project</p>
+  </div>
+</footer>

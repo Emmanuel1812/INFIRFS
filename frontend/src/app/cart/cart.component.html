@@ -1,0 +1,45 @@
+<div class="cart-container">
+    <h2>{{ ts.translate('NAV_CART') }}</h2>
+
+    <div *ngIf="cartItems.length === 0" class="empty-cart">
+        <p>{{ ts.translate('TXT_NO_ITEMS') }}</p>
+        <a routerLink="/" class="accessible-btn">{{ ts.translate('CART_SHOP') }}</a>
+    </div>
+
+    <div *ngIf="cartItems.length > 0">
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>{{ ts.translate('CART_PROD') }}</th>
+                    <th>{{ ts.translate('CART_PRICE') }}</th>
+                    <th>{{ ts.translate('CART_QTY') }}</th>
+                    <th>{{ ts.translate('CART_SUB') }}</th>
+                    <th>{{ ts.translate('CART_ACT') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of cartItems; let i = index">
+                    <a routerLink="/product/{{ item.id }}" class="product-name"><strong>{{ item.name }}</strong></a>
+                    <td>${{ item.price }}</td>
+                    <td>
+                        <input type="number" [(ngModel)]="item.quantity" (change)="updateCart()" min="1"
+                            class="qty-input">
+                    </td>
+                    <td><strong>${{ (item.price * item.quantity).toFixed(2) }}</strong></td>
+                    <td>
+                        <button class="accessible-btn secondary small" (click)="removeItem(i)">{{
+                            ts.translate('BTN_RMV') }}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="cart-summary">
+            <div class="total">
+                <span>{{ ts.translate('TXT_TOTAL') }}</span>
+                <span>${{ total.toFixed(2) }}</span>
+            </div>
+            <button class="accessible-btn checkout-btn" (click)="checkout()">{{ ts.translate('BTN_CHECKOUT') }}</button>
+        </div>
+    </div>
+</div>

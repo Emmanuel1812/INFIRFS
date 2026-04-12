@@ -1,0 +1,24 @@
+<div class="catalog-header"
+    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+    <h2>{{ ts.translate('NAV_HOME') }}</h2>
+    <div class="search-bar" style="display: flex; gap: 8px;">
+        <input type="text" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()"
+            [placeholder]="ts.translate('TXT_SEARCH_PLACEHOLDER')"
+            style="padding: 8px 12px; border: 1px solid var(--primary-color); border-radius: var(--radius-sm); width: 250px; font-family: 'Inter', sans-serif;">
+        <button (click)="onSearch()" class="accessible-btn">{{ ts.translate('BTN_SEARCH') }}</button>
+    </div>
+</div>
+<div class="product-grid">
+    <div class="product-card" *ngFor="let p of products">
+        <div class="product-image-container">
+            <img *ngIf="p.imageUrl" [src]="p.imageUrl" [alt]="p.name" class="product-image">
+            <div *ngIf="!p.imageUrl" class="product-image-placeholder">
+                <span>{{ p.name.substring(0,2).toUpperCase() }}</span>
+            </div>
+        </div>
+        <h3>{{ p.name }}</h3>
+        <p class="category">{{ p.category }}</p>
+        <p class="price">${{ p.price }}</p>
+        <a [routerLink]="['/product', p.id]" class="accessible-btn">{{ ts.translate('BTN_DETAILS') }}</a>
+    </div>
+</div>
