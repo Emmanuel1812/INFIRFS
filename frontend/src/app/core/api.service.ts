@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-    // Voor nu staat de URL hardcoded op localhost:8080 voor development.
-    private apiUrl = 'http://localhost:8080/api';
+    private apiUrl = window.location.hostname === 'localhost' 
+        ? 'http://localhost:8080/api' 
+        : 'https://backend-webshop-emmanuel.onrender.com/api';
 
     constructor(private http: HttpClient) { }
 
-    // Auth
     register(data: any): Observable<any> {
         return this.http.post(`${this.apiUrl}/auth/register`, data);
     }
@@ -21,7 +21,6 @@ export class ApiService {
         return this.http.post(`${this.apiUrl}/auth/login`, data);
     }
 
-    // Profile
     getProfile(): Observable<any> {
         return this.http.get<any>(`${this.apiUrl}/users/profile`);
     }
@@ -30,7 +29,6 @@ export class ApiService {
         return this.http.put<any>(`${this.apiUrl}/users/profile`, data);
     }
 
-    // Products
     getProducts(): Observable<any[]> {
         return this.http.get<any[]>(`${this.apiUrl}/products`);
     }
@@ -55,7 +53,6 @@ export class ApiService {
         return this.http.delete(`${this.apiUrl}/products/${id}`);
     }
 
-    // Orders
     createOrder(data: any): Observable<any> {
         return this.http.post(`${this.apiUrl}/orders`, data);
     }

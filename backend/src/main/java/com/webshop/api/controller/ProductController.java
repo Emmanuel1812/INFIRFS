@@ -12,11 +12,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/products")
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*", methods = { RequestMethod.GET, RequestMethod.POST,
-        RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS }) // Allow frontend access
-@RequiredArgsConstructor
+        RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS }) 
 public class ProductController {
 
     private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping
     public List<Product> getAllProducts() {
@@ -35,7 +38,6 @@ public class ProductController {
         return productService.searchProducts(query);
     }
 
-    // Secured endpoints for Admin later (handled by Spring Security config)
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
     public Product createProduct(@RequestBody Product product) {
@@ -60,3 +62,4 @@ public class ProductController {
         return ResponseEntity.ok().build();
     }
 }
+

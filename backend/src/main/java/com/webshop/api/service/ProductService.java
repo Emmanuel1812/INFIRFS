@@ -9,10 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService {
 
     private final ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     public List<Product> getAllProducts() {
         return productRepository.findAll();
@@ -38,10 +41,12 @@ public class ProductService {
             product.setCategory(productDetails.getCategory());
             product.setImageUrl(productDetails.getImageUrl());
             return productRepository.save(product);
-        }).orElseThrow(() -> new RuntimeException("Product not found"));
+        }).orElseThrow(() -> new RuntimeException("Product niet gevonden met ID: " + id));
     }
 
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
 }
+
+

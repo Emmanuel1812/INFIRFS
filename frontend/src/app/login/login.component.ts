@@ -15,11 +15,9 @@ import { TranslationService } from '../core/translation.service';
 export class LoginComponent {
     isLogin = true;
 
-    // Login form
     email = '';
     password = '';
 
-    // Register form
     firstName = '';
     lastName = '';
     regEmail = '';
@@ -33,8 +31,6 @@ export class LoginComponent {
 
     onSubmit(authForm: any) {
         if (authForm.invalid) {
-            // prevent sending when form is invalid (Enter key etc.)
-            console.warn('form invalid, aborting submit');
             return;
         }
         if (this.isLogin) {
