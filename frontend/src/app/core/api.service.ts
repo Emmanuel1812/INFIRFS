@@ -9,7 +9,7 @@ export class ApiService {
 
     private apiUrl = window.location.hostname === 'localhost' 
         ? 'http://localhost:8080/api' 
-        : 'https://backend-webshop-emmanuel.onrender.com/api';
+        : 'https://webshop-api-a96v.onrender.com/api';
 
     constructor(private http: HttpClient) { }
 
