@@ -94,32 +94,32 @@ public class DatabaseSeeder {
                                                 Product.builder().name("Ergonomic Gaming Chair").category("Furniture")
                                                                 .price(new BigDecimal("249.99"))
                                                                 .description("Comfortable chair with lumbar support for long sessions.")
-                                                                .imageUrl("https://m.media-amazon.com/images/I/71k8tiIhTIL._AC_.jpg")
+                                                                .imageUrl("https://m.media-amazon.com/images/I/71S5MwMOScL._AC_SL1500_.jpg")
                                                                 .build(),
 
                                                 Product.builder().name("Streaming Microphone Pro").category("Audio")
                                                                 .price(new BigDecimal("129.99"))
                                                                 .description("Studio quality USB microphone for streaming and podcasting.")
-                                                                .imageUrl("https://www.soundcreation.ro/admin/uploads/images/cms_products/module_35532/89630.jpg")
+                                                                .imageUrl("https://m.media-amazon.com/images/I/71s5NuFMRaL._AC_SL1500_.jpg")
                                                                 .build(),
 
                                                 Product.builder().name("4K Ultra HD Webcam").category("Peripherals")
                                                                 .price(new BigDecimal("199.99"))
                                                                 .description("Crystal clear video for streaming and calls.")
-                                                                .imageUrl("https://cdn.shopify.com/s/files/1/0064/7168/0115/products/Logitech_Brio_Ultra_HD_Pro_Webcam_2_1400x.jpg?v=1561389788")
+                                                                .imageUrl("https://m.media-amazon.com/images/I/71iNou61tsL._AC_SL1500_.jpg")
                                                                 .build(),
 
                                                 Product.builder().name("RGB Mousepad XL").category("Peripherals")
                                                                 .price(new BigDecimal("39.99"))
                                                                 .description("Extended gaming mousepad with customizable RGB lighting.")
-                                                                .imageUrl("https://m.media-amazon.com/images/I/61G3LSYHZ6L._AC_.jpg")
+                                                                .imageUrl("https://m.media-amazon.com/images/I/71RrQSBdKOL._AC_SL1500_.jpg")
                                                                 .build(),
 
                                                 Product.builder().name("Wireless Pro Controller")
                                                                 .category("Peripherals")
                                                                 .price(new BigDecimal("69.99"))
                                                                 .description("Low latency wireless gamepad with programmable buttons.")
-                                                                .imageUrl("https://tse2.mm.bing.net/th/id/OIP.Q_bdiFi8lOmF3FTGWGIknAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3")
+                                                                .imageUrl("https://m.media-amazon.com/images/I/61cgMGPu+WL._AC_SL1500_.jpg")
                                                                 .build()));
                         }
 
